@@ -1,5 +1,5 @@
 package NewProject.Common;
 
 public class CommomVariables {
-    public static String loginEmail = null;
+    public static String LoginName = null;
 }
