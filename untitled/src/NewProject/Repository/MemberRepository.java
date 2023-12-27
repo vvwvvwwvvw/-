@@ -20,4 +20,17 @@ public class MemberRepository {
     public boolean memberSave(MemberDTO memberDTO) {
         return memberDTOList.add(memberDTO);
     }
+
+    public boolean memberUpdate(String loginName, String memberName, int memberId) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            if (loginName.equals(memberDTOList.get(i).getMemberName())){
+                memberDTOList.get(i).setMemberName(memberName);
+                memberDTOList.get(i).setMemberId(memberId);
+                result = true;
+            }
+
+        }
+        return result;
+    }
 }
