@@ -1,7 +1,9 @@
 package NewProject.Service;
 
 import NewProject.DTO.ProductDTO;
+import NewProject.DTO.RevenueDTO;
 import NewProject.Repository.ProductRepository;
+import NewProject.Repository.RevenueRepositoty;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,8 +22,10 @@ public class ProductService {
         System.out.print("구매 단가: ");
         int PurchasePrice = scanner.nextInt();
         ProductDTO productDTO = new ProductDTO(ProductName , ProductQuantity , ProductFrom , PurchasePrice );
+        RevenueDTO revenueDTO = new RevenueDTO(ProductName, PurchasePrice ,0);
+        boolean RevenueResult = RevenueRepositoty.PurchasePriceSave(revenueDTO);
         boolean result = productRepository.ProductSave(productDTO);
-        if (result){
+        if (result && RevenueResult){
             System.out.println("등록 되었습니다");
         }else {
             System.out.println("등록에 실패 하였습니다 다시 시도해주세요");
