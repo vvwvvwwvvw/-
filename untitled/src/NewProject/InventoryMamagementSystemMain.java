@@ -3,7 +3,7 @@ package NewProject;
 import NewProject.Common.CommomVariables;
 import NewProject.Service.MemberService;
 import NewProject.Service.ProductService;
-import NewProject.Service.StoreService;
+import NewProject.Service.ReleaseService;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class InventoryMamagementSystemMain {
         Scanner scanner = new Scanner(System.in);
         CommomVariables commomVariables = new CommomVariables();
         MemberService memberService = new MemberService();
-        StoreService storeService = new StoreService();
+        ReleaseService releaseService = new ReleaseService();
         int seletNo = 0;
         boolean run = true;
         while (run) {
@@ -28,27 +28,54 @@ public class InventoryMamagementSystemMain {
             } else if (seletNo == 3) {
                 memberService.memberUpdate();
             } else if (seletNo == 4) {
+                if (commomVariables.LoginName == null)
+                    System.out.println("로그인후 이용해주세요");
                 if (commomVariables.LoginName != null) {
                     while (run) {
                         System.out.println("입출고 관리");
-                        System.out.println("1.입고 관리| 2.출고 관리");
-                        scanner.nextInt();
+                        System.out.println("1.입고 관리| 2.출고 관리 | 3.제품 관리 현황");
+                        System.out.print("선택> ");
+                        seletNo = scanner.nextInt();
                         if (seletNo == 1) {
-                            while (run){
+                            while (run) {
                                 System.out.println("입고 관리");
-                                System.out.println("1.제품 등록 | 2.제품 목록 | 3.제품 검색");
-                                scanner.nextInt();
+                                System.out.println("1.제품 등록 | 2.제품 목록 | 3.제품 검색 | 0. 뒤로가기");
+                                System.out.print("선택> ");
+                                seletNo = scanner.nextInt();
+                                if (seletNo == 1) {
+                                    if (seletNo == 1) {
+                                        productService.ProductSave();
+                                    } else if (seletNo == 2) {
+                                        productService.ProductList();
+                                    } else if (seletNo == 3) {
+                                        productService.ProductSearch();
+                                    } else if (seletNo == 0) {
+                                        break;
+                                    }
+                                }
+                            }
+                        } else if (seletNo == 2) {
+                            while (run) {
+                                System.out.println("출고 관리");
+                                System.out.println("1.제품 출고 | 2.출고 리스트");
+                                System.out.print("선택> ");
+                                seletNo = scanner.nextInt();
                                 if (seletNo == 1){
-                                    productService.ProductSave();
+                                    releaseService.ProductSell();
+                                } else if (seletNo == 2) {
+                                    releaseService.SellList();
                                 }
                             }
                         }
                     }
+
                 } else if (seletNo == 5) {
                     memberService.logOut();
                 }
+
             }
 
         }
     }
 }
+

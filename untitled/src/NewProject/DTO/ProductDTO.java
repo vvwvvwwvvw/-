@@ -62,7 +62,7 @@ public class ProductDTO {
 
     }
     Long idValue = 1L;
-    ProductDTO(String productName , int productQuantity , String productFrom , int purchasePrice){
+    public ProductDTO(String productName, int productQuantity, String productFrom, int purchasePrice){
         this.id = idValue++;
         this.productName=productName;
         this.ProductQuantity = productQuantity;
