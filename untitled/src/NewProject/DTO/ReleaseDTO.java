@@ -78,6 +78,7 @@ public class ReleaseDTO {
         this.SalesQuantity = salesQuantity;
         this.SellTo = sellTo;
         this.SellPrice = sellPrice;
+        this.SellRevenue = SellRevenue;
         this.createAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"));
     }
 
@@ -88,9 +89,9 @@ public class ReleaseDTO {
                 ", productName='" + productName + '\'' +
                 ", SalesQuantity=" + SalesQuantity +
                 ", SellTo='" + SellTo + '\'' +
-                ", createAt='" + createAt + '\'' +
                 ", SellPrice=" + SellPrice +
                 ", SellRevenue=" + SellRevenue +
+                ", createAt='" + createAt + '\'' +
                 '}';
     }
 }
