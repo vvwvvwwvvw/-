@@ -4,6 +4,7 @@ public class RevenueDTO {
     private String ProductName;
     private int purchasePrice;
     private int SellPrice;
+    private int Revenue;
 
 
     public void setProductName(String productName) {
@@ -29,6 +30,15 @@ public class RevenueDTO {
     public int getSellPrice() {
         return SellPrice;
     }
+
+    public int getRevenue() {
+        return Revenue;
+    }
+
+    public void setRevenue(int revenue) {
+        Revenue = revenue;
+    }
+
     public RevenueDTO(){
 
     }
@@ -36,6 +46,7 @@ public class RevenueDTO {
         this.ProductName = ProductName;
         this.purchasePrice=purchasePrice;
         this.SellPrice = SellPrice;
+        this.Revenue = SellPrice - purchasePrice;
     }
 
     @Override

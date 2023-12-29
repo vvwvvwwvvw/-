@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class ProductService {
     Scanner scanner = new Scanner(System.in);
     ProductRepository productRepository = new ProductRepository();
+    RevenueRepositoty revenueRepositoty = new RevenueRepositoty();
 
     public void ProductSave() {
         System.out.print("제품명: ");
@@ -23,7 +24,7 @@ public class ProductService {
         int PurchasePrice = scanner.nextInt();
         ProductDTO productDTO = new ProductDTO(ProductName , ProductQuantity , ProductFrom , PurchasePrice );
         RevenueDTO revenueDTO = new RevenueDTO(ProductName, PurchasePrice ,0);
-        boolean RevenueResult = RevenueRepositoty.PurchasePriceSave(revenueDTO);
+        boolean RevenueResult = revenueRepositoty.PurchasePriceSave(revenueDTO);
         boolean result = productRepository.ProductSave(productDTO);
         if (result && RevenueResult){
             System.out.println("등록 되었습니다");
