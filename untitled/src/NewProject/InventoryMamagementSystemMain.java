@@ -37,7 +37,7 @@ public class InventoryMamagementSystemMain {
                     while (run2) {
                         int num = 0;
                         System.out.println("입출고 관리");
-                        System.out.println("1.입고 관리| 2.출고 관리 | 3.제품 관리 현황 | 0.뒤로 가기");
+                        System.out.println("1.입고 관리| 2.출고 관리 | 0.뒤로 가기");
                         System.out.print("선택> ");
                         num = scanner.nextInt();
                         if (num == 1) {
@@ -62,7 +62,7 @@ public class InventoryMamagementSystemMain {
                             while (run4) {
                                 int num3 =0;
                                 System.out.println("출고 관리");
-                                System.out.println("1.제품 출고 | 2.출고 리스트 | 3.상품 검색 | 4.수익률 | 0.돌아 가기");
+                                System.out.println("1.제품 출고 | 2.출고 리스트 | 3.상품 검색 | 4.총 판매액 | 0.돌아 가기");
                                 System.out.print("선택> ");
                                 num3 = scanner.nextInt();
                                 if (num3 == 1){
@@ -77,6 +77,7 @@ public class InventoryMamagementSystemMain {
                                     break;
                                 }
                             }
+
                         }
                     }
 
