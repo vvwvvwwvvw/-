@@ -1,7 +1,9 @@
 package NewProject.Service;
 
+;
 import NewProject.DTO.ReleaseDTO;
 import NewProject.DTO.RevenueDTO;
+import NewProject.Repository.ProductRepository;
 import NewProject.Repository.ReleaseRepository;
 import NewProject.Repository.RevenueRepositoty;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReleaseService {
+    ProductRepository productRepository = new ProductRepository();
     ReleaseRepository releaseRepository = new ReleaseRepository();
     RevenueRepositoty revenueRepositoty = new RevenueRepositoty();
     Scanner scanner = new Scanner(System.in);
@@ -22,7 +25,8 @@ public class ReleaseService {
         System.out.print("판매 가격: ");
         int SellPrice = scanner.nextInt();
         ReleaseDTO releaseDTO = new ReleaseDTO(productName,SalesQuantity,SellTo,SellPrice);
-        RevenueDTO revenueDTO = new RevenueDTO(productName ,0 ,SellPrice);
+        RevenueDTO revenueDTO = new RevenueDTO(productName, 0 ,SellPrice , 0 ,SalesQuantity);
+        System.out.println(productRepository.productBuy(productName));
         boolean result = releaseRepository.ProductSell(releaseDTO);
         boolean RevenueResult = revenueRepositoty.SellSave(revenueDTO);
         if (result && RevenueResult){
@@ -56,7 +60,7 @@ public class ReleaseService {
         System.out.println("조회할 제품명: ");
         String productName = scanner.next();
         System.out.println(revenueRepositoty.SellRevenue(productName));
-        }
     }
+}
 
 

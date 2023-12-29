@@ -35,41 +35,46 @@ public class InventoryMamagementSystemMain {
                     System.out.println("로그인후 이용해주세요");
                 if (commomVariables.LoginName != null) {
                     while (run2) {
+                        int num = 0;
                         System.out.println("입출고 관리");
                         System.out.println("1.입고 관리| 2.출고 관리 | 3.제품 관리 현황 | 0.뒤로 가기");
                         System.out.print("선택> ");
-                        seletNo = scanner.nextInt();
-                        if (seletNo == 1) {
+                        num = scanner.nextInt();
+                        if (num == 1) {
                             while (run3) {
+                                int num2 = 0;
                                 System.out.println("입고 관리");
                                 System.out.println("1.제품 등록 | 2.제품 목록 | 3.제품 검색 | 0. 뒤로가기");
                                 System.out.print("선택> ");
-                                seletNo = scanner.nextInt();
-                                if (seletNo == 1) {
+                                num2 = scanner.nextInt();
+                                if (num2 == 1) {
                                     productService.ProductSave();
-                                } else if (seletNo == 2) {
+                                } else if (num2 == 2) {
                                     productService.ProductList();
-                                } else if (seletNo == 3) {
+                                } else if (num2 == 3) {
                                     productService.ProductSearch();
-                                } else if (seletNo == 0) {
-                                    run3 = false;
+                                } else if (num2 == 0) {
+                                    break;
                                 }
 
                             }
-                        } else if (seletNo == 2) {
+                        } else if (num == 2) {
                             while (run4) {
+                                int num3 =0;
                                 System.out.println("출고 관리");
                                 System.out.println("1.제품 출고 | 2.출고 리스트 | 3.상품 검색 | 4.수익률 | 0.돌아 가기");
                                 System.out.print("선택> ");
-                                seletNo = scanner.nextInt();
-                                if (seletNo == 1){
+                                num3 = scanner.nextInt();
+                                if (num3 == 1){
                                     releaseService.ProductSell();
-                                } else if (seletNo == 2) {
+                                } else if (num3 == 2) {
                                     releaseService.SellList();
-                                } else if (seletNo == 3) {
+                                } else if (num3 == 3) {
                                     releaseService.SellSearch();
-                                } else if (seletNo == 4) {
+                                } else if (num3 == 4) {
                                     releaseService.SellRevenue();
+                                } else if (num3 == 0) {
+                                    break;
                                 }
                             }
                         }

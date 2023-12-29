@@ -11,6 +11,8 @@ public class ProductDTO {
     private String createdAt; // 입고 시간
     private int purchasePrice; // 구매 단가
 
+    private int Buy;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -58,7 +60,16 @@ public class ProductDTO {
     public int getPurchasePrice() {
         return purchasePrice;
     }
-    ProductDTO(){
+
+    public int getBuy() {
+        return Buy;
+    }
+
+    public void setBuy(int buy) {
+        Buy = buy;
+    }
+
+    public ProductDTO(){
 
     }
     Long idValue = 1L;
@@ -68,17 +79,19 @@ public class ProductDTO {
         this.ProductQuantity = productQuantity;
         this.ProductFrom = productFrom;
         this.purchasePrice = purchasePrice;
+        this.Buy = productQuantity * purchasePrice;
         this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"));
     }
 
     @Override
     public String toString() {
-        return "productDTO{" +
+        return "ProductDTO{" +
                 "id=" + id +
                 ", productName='" + productName + '\'' +
                 ", ProductQuantity=" + ProductQuantity +
                 ", ProductFrom='" + ProductFrom + '\'' +
-                ", purchasePrice=" + purchasePrice + '\'' +
+                ", purchasePrice=" + purchasePrice +
+                ", Buy=" + Buy +
                 ", createdAt='" + createdAt + '\'' +
                 '}';
     }

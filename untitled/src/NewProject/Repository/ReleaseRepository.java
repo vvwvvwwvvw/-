@@ -24,4 +24,13 @@ public class ReleaseRepository {
         }
         return releaseDTOS;
     }
+
+    public int productSell() {
+        int a = 0;
+        for (ReleaseDTO releaseDTO : releaseDTOList) {
+          a = releaseDTO.getSellPrice();
+        }
+      return a;
+    }
 }
+

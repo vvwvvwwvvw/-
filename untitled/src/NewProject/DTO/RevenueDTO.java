@@ -2,9 +2,11 @@ package NewProject.DTO;
 
 public class RevenueDTO {
     private String ProductName;
-    private int purchasePrice;
+    private  int purchasePrice;
     private int SellPrice;
     private int Revenue;
+    private int ProductQuantity; // 구매 수량
+    private int SalesQuantity; // 판매 수량
 
 
     public void setProductName(String productName) {
@@ -39,14 +41,30 @@ public class RevenueDTO {
         Revenue = revenue;
     }
 
+    public int getProductQuantity() {
+        return ProductQuantity;
+    }
+
+    public int getSalesQuantity() {
+        return SalesQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        ProductQuantity = productQuantity;
+    }
+
+    public void setSalesQuantity(int salesQuantity) {
+        SalesQuantity = salesQuantity;
+    }
+
     public RevenueDTO(){
 
     }
-    public RevenueDTO(String ProductName , int purchasePrice , int SellPrice){
+    public RevenueDTO(String ProductName , int purchasePrice , int SellPrice , int ProductQuantity , int SalesQuantity){
         this.ProductName = ProductName;
-        this.purchasePrice=purchasePrice;
-        this.SellPrice = SellPrice;
-        this.Revenue = SellPrice - purchasePrice;
+        this.purchasePrice= purchasePrice * ProductQuantity;
+        this.SellPrice = SellPrice * SalesQuantity;
+        this.Revenue += SellPrice - purchasePrice;
     }
 
     @Override
@@ -54,7 +72,10 @@ public class RevenueDTO {
         return "RevenueDTO{" +
                 "ProductName='" + ProductName + '\'' +
                 ", purchasePrice=" + purchasePrice +
+                ", ProductQuantity=" + ProductQuantity +
+                ", SalesQuantity=" + SalesQuantity +
                 ", SellPrice=" + SellPrice +
+                ", Revenue=" + Revenue +
                 '}';
     }
 }

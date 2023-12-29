@@ -24,4 +24,14 @@ public class ProductRepository {
         }
         return productDTOS;
     }
+    public int productBuy(String productName){
+        int a = 0;
+        for (int i = 0; i < productDTOList.size(); i++) {
+            if (productName.equals(productDTOList.get(i).getProductName())){
+               a = productDTOList.get(i).getPurchasePrice();
+            }
+
+        }
+        return a;
+    }
 }

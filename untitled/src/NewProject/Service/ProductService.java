@@ -3,6 +3,7 @@ package NewProject.Service;
 import NewProject.DTO.ProductDTO;
 import NewProject.DTO.RevenueDTO;
 import NewProject.Repository.ProductRepository;
+import NewProject.Repository.ReleaseRepository;
 import NewProject.Repository.RevenueRepositoty;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 
 public class ProductService {
     Scanner scanner = new Scanner(System.in);
+    ReleaseRepository releaseRepository = new ReleaseRepository();
     ProductRepository productRepository = new ProductRepository();
     RevenueRepositoty revenueRepositoty = new RevenueRepositoty();
 
@@ -21,9 +23,10 @@ public class ProductService {
         System.out.print("구매처: ");
         String ProductFrom = scanner.next();
         System.out.print("구매 단가: ");
-        int PurchasePrice = scanner.nextInt();
-        ProductDTO productDTO = new ProductDTO(ProductName , ProductQuantity , ProductFrom , PurchasePrice );
-        RevenueDTO revenueDTO = new RevenueDTO(ProductName, PurchasePrice ,0);
+        int purchasePrice = scanner.nextInt();
+        ProductDTO productDTO = new ProductDTO(ProductName , ProductQuantity , ProductFrom , purchasePrice );
+        RevenueDTO revenueDTO = new RevenueDTO(ProductName , purchasePrice ,0, ProductQuantity ,0);
+        System.out.println(releaseRepository.productSell());
         boolean RevenueResult = revenueRepositoty.PurchasePriceSave(revenueDTO);
         boolean result = productRepository.ProductSave(productDTO);
         if (result && RevenueResult){
